@@ -9,7 +9,6 @@ public class PersonRepo {
     private Person[] People;
     /**
      * Integer pointer at the first empty element of People
-     *
      */
     private int pointer = 0;
 
