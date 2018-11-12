@@ -54,6 +54,7 @@ public class PersonRepo {
     /**
      * Method that deletes particular person
      * @param id (int)
+     *
      */
     public void DeletePerson(int id) {
         for (int i = 0; i < People.length; i++)
