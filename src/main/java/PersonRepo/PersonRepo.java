@@ -58,9 +58,11 @@ public class PersonRepo {
     public void DeletePerson(int id) {
         for (int i = 0; i < People.length; i++)
             if (People[i].getId() == id) {
-                for (int j = i; j < People.length - 1; j++)
-                    People[j] = People[j + 1];
-                People[pointer - 1] = null;
+                System.arraycopy(People, i + 1, People, i, People.length - i - 1);
+                // for (int j = i; j < People.length - 1; j++)
+                //    People[j] = People[j + 1];
+                //People[pointer - 1] = null;
+                pointer--;
                 break;
             }
     }
