@@ -1,7 +1,7 @@
 package Person;
 
 import org.joda.time.DateTime;
-import org.joda.time.Days;
+import org.joda.time.Years;
 
 public class Person {
     /**
@@ -52,7 +52,7 @@ public class Person {
      * @return (int)
      */
     public int getAge() {
-        return Days.daysBetween(Birthdate, DateTime.now()).getDays() / 365;
+        return Years.yearsBetween(Birthdate, DateTime.now()).getYears();
     }
 
     /**
