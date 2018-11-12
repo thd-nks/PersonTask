@@ -3,14 +3,27 @@ package PersonRepo;
 import Person.Person;
 
 public class PersonRepo {
-
+    /**
+     * Person's array
+     */
     private Person[] People;
+    /**
+     * Integer pointer at the last empty element of People
+     */
     private int pointer = 0;
 
+    /**
+     * Person's array constructor
+     */
     public PersonRepo() {
         People = new Person[10];
     }
 
+    /**
+     * Method that seeks for particular person
+     *
+     * @return (Person)
+     */
     public Person FindPerson(int id) {
         if (id < People.length || id < People[People.length - 1].getId())
             for (Person person : People) {
@@ -20,6 +33,10 @@ public class PersonRepo {
         return null;
     }
 
+    /**
+     * Method that adds person to the array
+     * @param person (Person)
+     */
     public void AddPerson(Person person) {
         if (pointer < People.length) {
             People[pointer] = person;
@@ -34,6 +51,10 @@ public class PersonRepo {
         System.out.println("ID: " + person.getId());
     }
 
+    /**
+     * Method that deletes particular person
+     * @param id (int)
+     */
     public void DeletePerson(int id) {
         for (int i = 0; i < People.length; i++)
             if (People[i].getId() == id) {
