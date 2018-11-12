@@ -24,7 +24,6 @@ public class Person {
 
     public String getName() {
         return Name;
-
     }
 
     public int getAge() {
