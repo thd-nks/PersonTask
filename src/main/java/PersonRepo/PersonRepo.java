@@ -8,7 +8,7 @@ public class PersonRepo {
      */
     private Person[] People;
     /**
-     * Integer pointer at the last empty element of People
+     * Integer pointer at the first empty element of People
      */
     private int pointer = 0;
 
@@ -54,7 +54,6 @@ public class PersonRepo {
     /**
      * Method that deletes particular person
      * @param id (int)
-     *
      */
     public void DeletePerson(int id) {
         for (int i = 0; i < People.length; i++)
