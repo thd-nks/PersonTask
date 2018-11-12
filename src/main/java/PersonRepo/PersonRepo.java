@@ -21,7 +21,6 @@ public class PersonRepo {
 
     /**
      * Method that seeks for particular person
-     *
      * @return (Person)
      */
     public Person FindPerson(int id) {
