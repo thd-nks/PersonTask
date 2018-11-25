@@ -1,6 +1,8 @@
 package PersonRepo;
 
+import Checker.Checker;
 import Person.Person;
+import org.joda.time.DateTime;
 
 public class PersonRepo {
     /**
@@ -17,12 +19,17 @@ public class PersonRepo {
      */
     public PersonRepo() {
         People = new Person[10];
+        AddPerson(new Person("3", new DateTime(1996, 12, 21, 0, 0), true));
+        AddPerson(new Person("3", new DateTime(1996, 12, 20, 0, 0), true));
+        AddPerson(new Person("5", new DateTime(1995, 11, 21, 0, 0), false));
+        AddPerson(new Person("1", new DateTime(1998, 1, 21, 0, 0), false));
+        AddPerson(new Person("2", new DateTime(1993, 11, 21, 0, 0), false));
     }
 
-    /**
+    /*
      * Method that seeks for particular person
      * @return (Person)
-     */
+     *
     public Person FindPerson(int id) {
         if (id < People.length || id < People[People.length - 1].getId())
             for (Person person : People) {
@@ -31,6 +38,7 @@ public class PersonRepo {
             }
         return null;
     }
+    */
 
     /**
      * Method that adds person to the array
@@ -65,4 +73,19 @@ public class PersonRepo {
                 break;
             }
     }
+
+    /**
+     * Method that finds
+     *
+     * @param checker (Checker)
+     * @param seeked  (Object)
+     */
+    public Person Find(Checker checker, Object seeked) {
+        for (Person person : People) {
+            if (checker.Check(person, seeked))
+                return person;
+        }
+        return null;
+    }
+
 }

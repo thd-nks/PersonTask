@@ -7,7 +7,7 @@ public class Person {
     /**
      * Static property with id of the last person added
      */
-    private static int id = 0;
+    private static Integer lastid = 0;
     /**
      * Property with the name of the person
      */
@@ -19,11 +19,11 @@ public class Person {
     /**
      * Property with sex of the person (True = Male, False = Female)
      */
-    private boolean Sex;
+    private Boolean Sex;
     /**
      * Property with id of the person
      */
-    private int Id;
+    private Integer Id;
 
     /**
      * Person's constructor
@@ -32,11 +32,11 @@ public class Person {
      * @param name      (String)
      * @param sex       (boolean)
      */
-    public Person(String name, DateTime birthdate, boolean sex) {
+    public Person(String name, DateTime birthdate, Boolean sex) {
         this.Name = name;
         this.Birthdate = birthdate;
         this.Sex = sex;
-        this.Id = id++;
+        this.Id = lastid++;
     }
 
     /**
@@ -46,15 +46,13 @@ public class Person {
     public String getName() {
         return Name;
     }
-
     /**
      * Method that calculates person's age
      * @return (int)
      */
-    public int getAge() {
+    public Integer getAge() {
         return Years.yearsBetween(Birthdate, DateTime.now()).getYears();
     }
-
     /**
      * Method that returns person's sex
      * @return (String)
@@ -69,10 +67,9 @@ public class Person {
      * Method that returns person's id
      * @return (int)
      */
-    public int getId() {
+    public Integer getId() {
         return this.Id;
     }
-
     /**
      * String representation of the person
      * @return (String)

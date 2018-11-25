@@ -1,3 +1,7 @@
+import Checker.AgeChecker;
+import Checker.Checker;
+import Checker.IdChecker;
+import Checker.NameChecker;
 import Person.Person;
 import PersonRepo.PersonRepo;
 import org.joda.time.DateTime;
@@ -19,8 +23,23 @@ public class Main {
                         break;
 
                     case (2):
-                        System.out.println("Enter person's ID: ");
-                        ShowPerson(scanner.nextInt(), People);
+                        System.out.println("Select parameter:\n 1.Id\n 2.Age\n 3.Name");
+                        switch (scanner.nextInt()) {
+                            case (1):
+                                System.out.println("Enter ID:");
+                                ShowPerson(new IdChecker(), scanner.nextInt(), People);
+                                break;
+                            case (2):
+                                System.out.println("Enter Age:");
+                                ShowPerson(new AgeChecker(), scanner.nextInt(), People);
+                                break;
+                            case (3):
+                                System.out.println("Enter Name:");
+                                ShowPerson(new NameChecker(), scanner.next(), People);
+                                break;
+                            default:
+                                break;
+                        }
                         break;
 
                     case (3):
@@ -41,12 +60,12 @@ public class Main {
         }
     }
 
-    static void AddPerson(Scanner scanner, PersonRepo People) throws Exception {
+    private static void AddPerson(Scanner scanner, PersonRepo People) throws Exception {
         System.out.println("Name:");
         String Name = scanner.next();
         System.out.println("Sex (Male/Female):");
         String temporary = scanner.next();
-        boolean Sex;
+        Boolean Sex;
         if (temporary.toLowerCase().equals("male"))
             Sex = true;
         else if (temporary.toLowerCase().equals("female"))
@@ -57,11 +76,11 @@ public class Main {
         People.AddPerson(new Person(Name, Birthdate, Sex));
     }
 
-    static void ShowPerson(int id, PersonRepo People) {
-        System.out.println(People.FindPerson(id).toString());
+    private static void ShowPerson(Checker checker, Object seeked, PersonRepo People) {
+        System.out.println(People.Find(checker, seeked));
     }
 
-    static void DeletePerson(int id, PersonRepo People) {
+    private static void DeletePerson(Integer id, PersonRepo People) {
         People.DeletePerson(id);
         System.out.println("Deleted");
     }
