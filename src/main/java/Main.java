@@ -84,7 +84,6 @@ public class Main {
                         }
                         SortPeople(sorter, comparator, People);
 
-
                     case (5):
                         System.exit(0);
                         break;

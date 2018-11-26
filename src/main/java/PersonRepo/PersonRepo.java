@@ -75,6 +75,12 @@ public class PersonRepo {
             }
     }
 
+    /**
+     * Method that sorts array of Person
+     *
+     * @param sorter     (Sorter)
+     * @param comparator (Comparator)
+     */
     public void SortPeople(Sorter sorter, Comparator comparator) {
         sorter.sort(People, comparator);
     }
