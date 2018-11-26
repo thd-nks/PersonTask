@@ -2,8 +2,15 @@ import Checker.AgeChecker;
 import Checker.Checker;
 import Checker.IdChecker;
 import Checker.NameChecker;
+import Comparator.AgeComparator;
+import Comparator.Comparator;
+import Comparator.NameComparator;
 import Person.Person;
 import PersonRepo.PersonRepo;
+import Sorter.BubbleSort;
+import Sorter.InsertionSort;
+import Sorter.SelectionSort;
+import Sorter.Sorter;
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 
@@ -15,7 +22,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         PersonRepo People = new PersonRepo();
         for (; ; ) {
-            System.out.print("What do you want?\n 1.Add\n 2.Find\n 3.Delete\n 4.Exit\n");
+            System.out.print("What do you want?\n 1.Add\n 2.Find\n 3.Delete\n 4.Sort\n 5.Exit\n");
             try {
                 switch (scanner.nextInt()) {
                     case (1):
@@ -23,7 +30,7 @@ public class Main {
                         break;
 
                     case (2):
-                        System.out.println("Select parameter:\n 1.Id\n 2.Age\n 3.Name");
+                        System.out.println("Select parameter:\n 1.Id\n 2.Age\n 3.Name\n 4.All");
                         switch (scanner.nextInt()) {
                             case (1):
                                 System.out.println("Enter ID:");
@@ -48,6 +55,37 @@ public class Main {
                         break;
 
                     case (4):
+                        System.out.println("Select sort:\n 1.Bubble Sort\n 2.Selection Sort\n 3.Insertion Sort");
+                        Sorter sorter = new BubbleSort();
+                        switch (scanner.nextInt()) {
+                            case (1):
+                                sorter = new BubbleSort();
+                                break;
+                            case (2):
+                                sorter = new SelectionSort();
+                                break;
+                            case (3):
+                                sorter = new InsertionSort();
+                                break;
+                            default:
+                                break;
+                        }
+                        Comparator comparator = new AgeComparator();
+                        System.out.println("Select param:\n 1.Age\n 2.Name");
+                        switch (scanner.nextInt()) {
+                            case (1):
+                                comparator = new AgeComparator();
+                                break;
+                            case (2):
+                                comparator = new NameComparator();
+                                break;
+                            default:
+                                break;
+                        }
+                        SortPeople(sorter, comparator, People);
+
+
+                    case (5):
                         System.exit(0);
                         break;
 
@@ -58,6 +96,10 @@ public class Main {
                 System.out.println(exception.toString());
             }
         }
+    }
+
+    private static void SortPeople(Sorter sorter, Comparator comparator, PersonRepo person) {
+        person.SortPeople(sorter, comparator);
     }
 
     private static void AddPerson(Scanner scanner, PersonRepo People) throws Exception {

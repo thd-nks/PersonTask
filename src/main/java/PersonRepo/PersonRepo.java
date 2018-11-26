@@ -1,7 +1,9 @@
 package PersonRepo;
 
 import Checker.Checker;
+import Comparator.Comparator;
 import Person.Person;
+import Sorter.Sorter;
 import org.joda.time.DateTime;
 
 public class PersonRepo {
@@ -57,7 +59,6 @@ public class PersonRepo {
         }
         System.out.println("ID: " + person.getId());
     }
-
     /**
      * Method that deletes particular person
      * @param id (int)
@@ -74,9 +75,12 @@ public class PersonRepo {
             }
     }
 
+    public void SortPeople(Sorter sorter, Comparator comparator) {
+        sorter.sort(People, comparator);
+    }
+
     /**
      * Method that finds
-     *
      * @param checker (Checker)
      * @param seeked  (Object)
      */
